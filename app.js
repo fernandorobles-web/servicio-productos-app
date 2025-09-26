@@ -1,7 +1,11 @@
 require('dotenv').config(); // Cargar variables de entorno
 const express = require('express');
+const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Servir archivos estáticos desde la carpeta public
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 
@@ -13,7 +17,7 @@ let productos = [
     descripcion: 'Camiseta de algodón 100% para uso diario.',
     marca: 'UrbanWear',
     precio: 15.99,
-    imagen: 'https://ejemplo.com/imagenes/camiseta-basica.jpg'
+    imagen: '/img/camiseta-basica.jpg'
   },
   {
     id: 2,
@@ -21,7 +25,7 @@ let productos = [
     descripcion: 'Jeans ajustados de mezclilla azul.',
     marca: 'DenimPro',
     precio: 39.99,
-    imagen: 'https://ejemplo.com/imagenes/jeans-slim-fit.jpg'
+    imagen: '/img/jeans-slim-fit.jpg'
   },
   {
     id: 3,
@@ -29,7 +33,7 @@ let productos = [
     descripcion: 'Zapatillas ligeras para correr.',
     marca: 'FastStep',
     precio: 59.99,
-    imagen: 'https://ejemplo.com/imagenes/zapatillas-running.jpg'
+    imagen: '/img/zapatillas-running.jpg'
   },
   {
     id: 4,
@@ -37,7 +41,7 @@ let productos = [
     descripcion: 'Sudadera cómoda con capucha y bolsillo frontal.',
     marca: 'UrbanWear',
     precio: 29.99,
-    imagen: 'https://ejemplo.com/imagenes/sudadera-capucha.jpg'
+    imagen: '/img/sudadera-capucha.jpg'
   },
   {
     id: 5,
@@ -45,7 +49,7 @@ let productos = [
     descripcion: 'Chaqueta ligera resistente al viento.',
     marca: 'WindGuard',
     precio: 49.99,
-    imagen: 'https://ejemplo.com/imagenes/chaqueta-rompevientos.jpg'
+    imagen: '/img/chaqueta-rompevientos.jpg'
   },
   {
     id: 6,
@@ -53,7 +57,7 @@ let productos = [
     descripcion: 'Botines elegantes de cuero genuino.',
     marca: 'LeatherStep',
     precio: 89.99,
-    imagen: 'https://ejemplo.com/imagenes/botines-cuero.jpg'
+    imagen: '/img/botines-cuero.jpg'
   },
   {
     id: 7,
@@ -61,7 +65,7 @@ let productos = [
     descripcion: 'Vestido fresco y cómodo para el verano.',
     marca: 'FreshLook',
     precio: 34.99,
-    imagen: 'https://ejemplo.com/imagenes/vestido-casual.jpg'
+    imagen: '/img/vestido-casual.jpg'
   },
   {
     id: 8,
@@ -69,7 +73,7 @@ let productos = [
     descripcion: 'Sandalias resistentes al agua para la playa.',
     marca: 'BeachWalk',
     precio: 19.99,
-    imagen: 'https://ejemplo.com/imagenes/sandalias-playeras.jpg'
+    imagen: '/img/sandalias-playeras.jpg'
   },
   {
     id: 9,
@@ -77,7 +81,7 @@ let productos = [
     descripcion: 'Camisa de vestir manga larga.',
     marca: 'ElegantMan',
     precio: 27.99,
-    imagen: 'https://ejemplo.com/imagenes/camisa-formal.jpg'
+    imagen: '/img/camisa-formal.jpg'
   },
   {
     id: 10,
@@ -85,7 +89,7 @@ let productos = [
     descripcion: 'Falda elegante con pliegues.',
     marca: 'ChicStyle',
     precio: 24.99,
-    imagen: 'https://ejemplo.com/imagenes/falda-plisada.jpg'
+    imagen: '/img/falda-plisada.jpg'
   },
   {
     id: 11,
@@ -93,7 +97,7 @@ let productos = [
     descripcion: 'Pantalón deportivo cómodo y moderno.',
     marca: 'SportyLife',
     precio: 22.99,
-    imagen: 'https://ejemplo.com/imagenes/pantalon-jogger.jpg'
+    imagen: '/img/pantalon-jogger.jpg'
   },
   {
     id: 12,
@@ -101,7 +105,7 @@ let productos = [
     descripcion: 'Zapatos formales de cuero para hombre.',
     marca: 'ClassicStep',
     precio: 69.99,
-    imagen: 'https://ejemplo.com/imagenes/zapatos-oxford.jpg'
+    imagen: '/img/zapatos-oxford.jpg'
   },
   {
     id: 13,
@@ -109,7 +113,7 @@ let productos = [
     descripcion: 'Blusa ligera con estampado floral.',
     marca: 'FlowerMood',
     precio: 18.99,
-    imagen: 'https://ejemplo.com/imagenes/blusa-estampada.jpg'
+    imagen: '/img/blusa-estampada.jpg'
   },
   {
     id: 14,
@@ -117,7 +121,7 @@ let productos = [
     descripcion: 'Short de secado rápido para deporte.',
     marca: 'ActiveFit',
     precio: 14.99,
-    imagen: 'https://ejemplo.com/imagenes/short-deportivo.jpg'
+    imagen: '/img/short-deportivo.jpg'
   },
   {
     id: 15,
@@ -125,7 +129,7 @@ let productos = [
     descripcion: 'Abrigo elegante para invierno.',
     marca: 'WinterLine',
     precio: 99.99,
-    imagen: 'https://ejemplo.com/imagenes/abrigo-largo.jpg'
+    imagen: '/img/abrigo-largo.jpg'
   },
   {
     id: 16,
@@ -133,7 +137,7 @@ let productos = [
     descripcion: 'Tenis cómodos para uso diario.',
     marca: 'UrbanStep',
     precio: 44.99,
-    imagen: 'https://ejemplo.com/imagenes/tenis-casual.jpg'
+    imagen: '/img/tenis-casual.jpg'
   },
   {
     id: 17,
@@ -141,7 +145,7 @@ let productos = [
     descripcion: 'Chamarra clásica de mezclilla azul.',
     marca: 'DenimPro',
     precio: 54.99,
-    imagen: 'https://ejemplo.com/imagenes/chamarra-mezclilla.jpg'
+    imagen: '/img/chamarra-mezclilla.jpg'
   },
   {
     id: 18,
@@ -149,7 +153,7 @@ let productos = [
     descripcion: 'Playera tipo polo de algodón.',
     marca: 'UrbanWear',
     precio: 21.99,
-    imagen: 'https://ejemplo.com/imagenes/polo-basica.jpg'
+    imagen: '/img/polo-basica.jpg'
   },
   {
     id: 19,
@@ -157,7 +161,7 @@ let productos = [
     descripcion: 'Botas resistentes para senderismo.',
     marca: 'MountainGear',
     precio: 79.99,
-    imagen: 'https://ejemplo.com/imagenes/botas-montana.jpg'
+    imagen: '/img/botas-montana.jpg'
   },
   {
     id: 20,
@@ -165,7 +169,7 @@ let productos = [
     descripcion: 'Leggings elásticos para entrenamiento.',
     marca: 'ActiveFit',
     precio: 17.99,
-    imagen: 'https://ejemplo.com/imagenes/leggings-deportivos.jpg'
+    imagen: '/img/leggings-deportivos.jpg'
   }
 ];
 
